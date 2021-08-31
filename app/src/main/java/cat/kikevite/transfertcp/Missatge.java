@@ -1,10 +1,13 @@
 package cat.kikevite.transfertcp;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 public class Missatge {
 
     String cos;
     boolean enviat;
-    String data;
+    Date fecha;
     String origen;
     String desti;
 
@@ -40,11 +43,29 @@ public class Missatge {
         this.enviat = enviat;
     }
 
-    public String getData() {
-        return data;
+    public void setFecha(Date fecha) {
+        this.fecha = fecha;
     }
 
-    public void setData(String data) {
-        this.data = data;
+    public String getHora() {
+        SimpleDateFormat formatter = new SimpleDateFormat("HH:mm");
+        return formatter.format(fecha);
     }
+
+    public String getAny() {
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy");
+        return formatter.format(fecha);
+    }
+
+    public String getMes() {
+        SimpleDateFormat formatter = new SimpleDateFormat("MM");
+        return formatter.format(fecha);
+    }
+
+    public String getDia() {
+        SimpleDateFormat formatter = new SimpleDateFormat("dd");
+        return formatter.format(fecha);
+    }
+
+
 }

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:padding="1dp">
@@ -11,7 +12,7 @@
         android:layout_height="0dp"
         android:background="#1919A3"
         app:layout_constraintBottom_toBottomOf="@+id/missatgeRebut"
-        app:layout_constraintEnd_toEndOf="@+id/missatgeRebut"
+        app:layout_constraintEnd_toEndOf="@+id/horaRebut"
         app:layout_constraintStart_toStartOf="@+id/missatgeRebut"
         app:layout_constraintTop_toTopOf="@+id/missatgeRebut" />
 
@@ -26,13 +27,25 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <TextView
+        android:id="@+id/horaRebut"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@android:color/white"
+        android:text=""
+        android:paddingEnd="4sp"
+        android:paddingBottom="4sp"
+        android:textSize="@dimen/tamany_text_hora"
+        app:layout_constraintBottom_toBottomOf="@+id/globoRebut"
+        app:layout_constraintStart_toEndOf="@+id/missatgeRebut"/>
+
     <View
         android:id="@+id/globoEnviat"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="#4949FB"
         app:layout_constraintBottom_toBottomOf="@+id/missatgeEnviat"
-        app:layout_constraintEnd_toEndOf="@+id/missatgeEnviat"
+        app:layout_constraintEnd_toEndOf="@+id/horaEnviat"
         app:layout_constraintStart_toStartOf="@+id/missatgeEnviat"
         app:layout_constraintTop_toTopOf="@+id/missatgeEnviat" />
 
@@ -44,7 +57,21 @@
         android:padding="5dp"
         android:textAlignment="viewStart"
         android:textColor="@android:color/white"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/horaEnviat"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/horaEnviat"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@android:color/white"
+        android:text=""
+        android:paddingEnd="4sp"
+        android:paddingBottom="4sp"
+        android:textSize="@dimen/tamany_text_hora"
+        app:layout_constraintBottom_toBottomOf="@+id/globoEnviat"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

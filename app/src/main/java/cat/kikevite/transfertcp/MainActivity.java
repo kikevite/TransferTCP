@@ -19,8 +19,10 @@ import java.net.InetAddress;
 import java.net.NetworkInterface;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Date;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
@@ -55,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
         String ip = getIPAddress(true);
         String[] parts = ip.split("\\.");
         if (parts.length == 4) {
-            ipEdit.setText(parts[0] + "." + parts[1] + "." + parts[2] + ".");
+            ipEdit.setText(parts[0] + "." + parts[1] + "." + parts[2] + ".125");
             this.setTitle("IP Origen: " + ip + ":" + port);
         } else {
             ipEdit.setText("");
@@ -91,7 +93,7 @@ public class MainActivity extends AppCompatActivity {
                         m.setCos(msg);
                         m.setEnviat(false);
                         m.setOrigen(ipOrigen);
-                        m.setData("fecha");
+                        m.setFecha(new Date());
                         m.setDesti(getIPAddress(true));
                         conversacio.add(m);
                         adapter.notifyDataSetChanged();
@@ -126,9 +128,8 @@ public class MainActivity extends AppCompatActivity {
             m.setCos(msg);
             m.setEnviat(true);
             m.setOrigen(getIPAddress(true));
-            m.setData("fecha");
+            m.setFecha(new Date());
             m.setDesti(ipDestino);
-
 
             conversacio.add(m);
             adapter.notifyDataSetChanged();

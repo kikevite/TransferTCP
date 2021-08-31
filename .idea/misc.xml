@@ -4,7 +4,8 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/AndroidStudioProjects/TransferTCP/app/src/main/res/layout/activity_main.xml" value="0.33" />
-        <entry key="..\:/AndroidStudioProjects/TransferTCP/app/src/main/res/layout/rv_layout.xml" value="0.20520833333333333" />
+        <entry key="..\:/AndroidStudioProjects/TransferTCP/app/src/main/res/layout/globus.xml" value="0.36666666666666664" />
+        <entry key="..\:/AndroidStudioProjects/TransferTCP/app/src/main/res/layout/rv_layout.xml" value="0.5" />
       </map>
     </option>
   </component>
