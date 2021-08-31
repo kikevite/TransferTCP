@@ -67,5 +67,4 @@ public class Missatge {
         return formatter.format(fecha);
     }
 
-
 }
