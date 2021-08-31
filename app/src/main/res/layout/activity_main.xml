@@ -46,16 +46,16 @@
 
     <EditText
         android:id="@+id/missatgeEdit"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:ems="10"
         android:layout_marginLeft="10sp"
         android:layout_marginRight="10sp"
         android:gravity="start|top"
-        android:hint="missatge..."
+        android:hint="Escriu..."
         android:inputType="textMultiLine"
         android:text=""
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/btn_enviar"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ipEdit" />
 
@@ -64,11 +64,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:onClick="enviar"
-        android:text="enviar"
+        android:text="ENVIAR"
+        android:layout_marginRight="10sp"
+        app:layout_constraintStart_toEndOf="@+id/missatgeEdit"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/missatgeEdit" />
+        app:layout_constraintTop_toBottomOf="@+id/ipEdit" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/conversaRv"
