@@ -28,8 +28,8 @@ public class MainActivity extends AppCompatActivity {
     int port = 9700;
 
     boolean borrarMissatgeEdit = true;
-    List<String> conversacio = new ArrayList<>();
-    List<Boolean> conversacioEnviat = new ArrayList<>();
+
+    List<Missatge> conversacio = new ArrayList<>();
 
     EditText ipEdit, missatgeEdit, portEdit;
     RecyclerViewAdapter adapter;
@@ -49,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
         RecyclerView.LayoutManager myLayoutManager;
         myLayoutManager = new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.VERTICAL, false);
         myRecyclerView.setLayoutManager(myLayoutManager);
-        adapter = new RecyclerViewAdapter(conversacio, conversacioEnviat);
+        adapter = new RecyclerViewAdapter(conversacio);
         myRecyclerView.setAdapter(adapter);
 
         String ip = getIPAddress(true);
@@ -86,9 +86,14 @@ public class MainActivity extends AppCompatActivity {
                     handler.post(() -> {
                         Inet4Address in4addr = (Inet4Address) s.getInetAddress();
                         String ipOrigen = in4addr.toString();
-                        String newMissatge = ipOrigen + ": " + msg;
-                        conversacio.add(newMissatge);
-                        conversacioEnviat.add(false);
+
+                        Missatge m = new Missatge();
+                        m.setCos(msg);
+                        m.setEnviat(false);
+                        m.setOrigen(ipOrigen);
+                        m.setData("fecha");
+                        m.setDesti(getIPAddress(true));
+                        conversacio.add(m);
                         adapter.notifyDataSetChanged();
                         myRecyclerView.scrollToPosition(conversacio.size() - 1);
                     });
@@ -113,10 +118,19 @@ public class MainActivity extends AppCompatActivity {
         }
         if (parts.length == 4 && rangOk) {
             String portEnviarString = portEdit.getText().toString();
-            b.execute(ipDestino, portEnviarString, missatgeEdit.getText().toString());
-            String newMissatge = "Tu a " + ipDestino + ": " + missatgeEdit.getText().toString();
-            conversacio.add(newMissatge);
-            conversacioEnviat.add(true);
+            String msg = missatgeEdit.getText().toString();
+            b.execute(ipDestino, portEnviarString, msg);
+            String newMissatge = "Tu a " + ipDestino + ": " + msg;
+
+            Missatge m = new Missatge();
+            m.setCos(msg);
+            m.setEnviat(true);
+            m.setOrigen(getIPAddress(true));
+            m.setData("fecha");
+            m.setDesti(ipDestino);
+
+
+            conversacio.add(m);
             adapter.notifyDataSetChanged();
             myRecyclerView.scrollToPosition(conversacio.size() - 1);
             if (borrarMissatgeEdit) {

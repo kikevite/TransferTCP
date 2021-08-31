@@ -13,12 +13,10 @@ import java.util.List;
 
 public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder> {
 
-    private List<String> conversa;
-    private List<Boolean> enviat;
+    private final List<Missatge> conversa;
 
-    RecyclerViewAdapter(List<String> conversa, List<Boolean> enviat) {
+    RecyclerViewAdapter(List<Missatge> conversa) {
         this.conversa = conversa;
-        this.enviat = enviat;
     }
 
     @NonNull
@@ -30,16 +28,19 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        if (enviat.get(position)) {
+        Missatge m = conversa.get(position);
+        if (m.isEnviat()) {
             // Missatge enviat
-            holder.missatgeEnviat.setText(conversa.get(position));
+            String text = "Tu a " + m.getDesti() + ": " + m.getCos();
+            holder.missatgeEnviat.setText(text);
             holder.missatgeEnviat.setVisibility(View.VISIBLE);
             holder.missatgeRebut.setVisibility(View.INVISIBLE);
             holder.globoEnviat.setVisibility(View.VISIBLE);
             holder.globoRebut.setVisibility(View.INVISIBLE);
         } else {
             // Missatge rebut
-            holder.missatgeRebut.setText(conversa.get(position));
+            String text = m.getOrigen() + ": " + m.getCos();
+            holder.missatgeRebut.setText(text);
             holder.missatgeEnviat.setVisibility(View.INVISIBLE);
             holder.missatgeRebut.setVisibility(View.VISIBLE);
             holder.globoEnviat.setVisibility(View.INVISIBLE);
@@ -53,7 +54,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         return conversa.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
+    public static class ViewHolder extends RecyclerView.ViewHolder {
 
         private final TextView missatgeRebut;
         private final TextView missatgeEnviat;
