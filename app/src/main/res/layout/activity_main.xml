@@ -12,24 +12,23 @@
         android:layout_height="wrap_content"
         android:text="IP Desti:"
         android:textSize="17sp"
-        app:layout_constraintBottom_toBottomOf="@+id/ipEdit"
+        app:layout_constraintStart_toStartOf="@+id/missatgeEdit"
         app:layout_constraintEnd_toStartOf="@+id/ipEdit"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/ipEdit" />
+        app:layout_constraintTop_toTopOf="@+id/ipEdit"
+        app:layout_constraintBottom_toBottomOf="@+id/ipEdit"
+        app:layout_constraintHorizontal_bias="0.5" />
 
     <EditText
         android:id="@+id/ipEdit"
-        android:layout_width="140sp"
+        android:layout_width="160sp"
         android:layout_height="wrap_content"
         android:digits="1234567890."
         android:ems="10"
+        android:gravity="center"
         android:hint="ip"
         android:inputType="textNoSuggestions"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/portEdit"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/textIpDesti"
+        app:layout_constraintEnd_toStartOf="@+id/portEdit"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
@@ -38,19 +37,18 @@
         android:layout_height="wrap_content"
         android:inputType="number"
         android:text="9700"
-        app:layout_constraintBottom_toBottomOf="@+id/ipEdit"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        android:gravity="center"
         app:layout_constraintStart_toEndOf="@+id/ipEdit"
-        app:layout_constraintTop_toTopOf="@+id/ipEdit" />
+        app:layout_constraintTop_toTopOf="@+id/ipEdit"
+        app:layout_constraintBottom_toBottomOf="@+id/ipEdit" />
 
     <EditText
         android:id="@+id/missatgeEdit"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:ems="10"
         android:layout_marginLeft="10sp"
         android:layout_marginRight="10sp"
+        android:ems="10"
         android:gravity="start|top"
         android:hint="Escriu..."
         android:inputType="textMultiLine"
@@ -63,11 +61,11 @@
         android:id="@+id/btn_enviar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginRight="10sp"
         android:onClick="enviar"
         android:text="ENVIAR"
-        android:layout_marginRight="10sp"
-        app:layout_constraintStart_toEndOf="@+id/missatgeEdit"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/missatgeEdit"
         app:layout_constraintTop_toBottomOf="@+id/ipEdit" />
 
     <androidx.recyclerview.widget.RecyclerView
